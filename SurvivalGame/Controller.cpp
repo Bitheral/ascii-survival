@@ -6,7 +6,6 @@ void Controller::start() {
 	const Difficulty MEDIUM = Difficulty("Medium", 10, 8);
 	const Difficulty HARD = Difficulty("Hard", 15, 12);
 
-
 	Game game = Game(15, 15, EASY);
 
 	game.drawMap();

@@ -38,6 +38,7 @@ void Game::drawMap() {
 	for (int y = 0; y < this->mapHeight; y++) {
 		for (int x = 0; x < this->mapWidth; x++) {
 			Console::setCursorPosition(y + this->mapOffsetY, x + this->mapOffsetX);
+			Console::setColour(this->mapColour, this->mapColour);
 			cout << this->mapChar;
 		}
 		cout << endl;
@@ -48,13 +49,13 @@ void Game::render() {
 
 	this->player.render();
 
-	/*for (int e = 0; e < this->enemies.size(); e++) {
+	for (int e = 0; e < this->enemies.size(); e++) {
 		this->enemies[e].render();
 	}
 
 	for (int t = 0; t < this->traps.size(); t++) {
 		this->traps[t].render();
-	}*/
+	}
 }
 
 void Game::update() {
@@ -100,6 +101,11 @@ void Game::update() {
 
 bool Game::isRunning() {
 	return this->running;
+}
+
+
+Console::COLOUR Game::getColour() {
+	return this->mapColour;
 }
 
 char Game::getFloorChar() {

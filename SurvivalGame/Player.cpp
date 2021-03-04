@@ -2,9 +2,11 @@
 
 #include "Player.h"
 
-Player::Player() { this->setCharacter('P'); }
-Player::Player(int x, int y) {
+Player::Player() { 
 	this->setCharacter('P');
+	this->setColour(Console::WHITE);
+}
+Player::Player(int x, int y) : Player() {
 	this->setPosition(x, y);
 }
 

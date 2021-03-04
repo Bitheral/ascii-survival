@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIFFICULTY_H
+#define DIFFICULTY_H
 
 #include <string>
 
@@ -26,3 +27,4 @@ public:
 		return this->trapsAllowed;
 	}
 };
+#endif

@@ -3,14 +3,14 @@
 #include <ctime>
 #include <string>
 
-#include "Game.h"
+#include "Controller.h"
 
 using namespace std;
 
 int main() {
-	srand(time(0));
 
-	
+	Controller controller;
+	controller.start();
 
 	return 0;
 }

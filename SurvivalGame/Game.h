@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 
 #include <vector>
 
@@ -13,7 +14,8 @@ class Game {
 private:
 	int mapWidth, mapHeight, mapOffsetX, mapOffsetY;
 	int mapArea[4] = { 0, 0, 0, 0 };
-	char mapChar = 180;
+	char mapChar = ' ';
+	Console::COLOUR mapColour = Console::GREEN;
 
 	Difficulty difficulty;
 
@@ -33,5 +35,7 @@ public:
 
 	bool isRunning();
 	char getFloorChar();
+	Console::COLOUR getColour();
 };
 
+#endif

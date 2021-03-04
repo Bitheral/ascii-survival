@@ -4,10 +4,10 @@
 
 Enemy::Enemy() {
     this->setCharacter('E');
+    this->setColour(Console::RED);
 }
 
-Enemy::Enemy(int x, int y){
-    this->setCharacter('E');
+Enemy::Enemy(int x, int y) : Enemy() {
     this->setPosition(x, y);
 }
 

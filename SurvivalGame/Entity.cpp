@@ -2,11 +2,16 @@
 #include "Game.h"
 
 void Entity::render() {
+	Game* tempGame = new Game();
+	Console::COLOUR gameColour = tempGame->getColour();
+	Console::setColour(this->colour, this->colour);
 	Console::setCursorPosition(this->position[1], this->position[0]);
 	cout << this->getCharacter();
+	Console::setColour(gameColour, gameColour);
 	Console::setCursorPosition(this->prevPosition[1], this->prevPosition[0]);
-	cout << Game().getFloorChar();
+	cout << tempGame->getFloorChar();
 	Console::setCursorPosition(this->position[1], this->position[0]);
+	delete tempGame;
 }
 
 bool* Entity::in_area(int x, int w, int y, int h) {
@@ -51,6 +56,9 @@ void Entity::Move(int x, int y) {
 
 	this->setPosition(currentX + x, currentY + y);
 }
+
+Console::COLOUR Entity::getColour() { return this->colour; }
+void Entity::setColour(Console::COLOUR colour) { this->colour = colour;  }
 
 char Entity::getCharacter() { return this->character; }
 void Entity::setCharacter(char character) { this->character = character; }

@@ -1,10 +1,13 @@
-#pragma once
+#ifndef TRAP_H
+#define TRAP_H
+
 #include "Entity.h"
 
 class Trap : public Entity {
 
 public:
-	Trap() {}
+	Trap();
 	Trap(int, int);
 };
 
+#endif

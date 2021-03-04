@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ENTITY_H
+#define ENTITY_H
+
 
 #include <iostream>;
 #include "console.h";
@@ -10,6 +12,7 @@ protected:
 	int position[2] = { 0, 0 };
 	int prevPosition[2] = { 0, 0 };
 	char character = '?';
+	Console::COLOUR colour;
 public:
 	void render();
 	void update();
@@ -19,6 +22,9 @@ public:
 	bool* in_area(int, int, int, int);
 	bool* in_area(int*);
 
+	Console::COLOUR getColour();
+	void setColour(Console::COLOUR);
+
 	char getCharacter();
 	void setCharacter(char);
 
@@ -27,4 +33,6 @@ public:
 
 	int* getPreviousPosition();
 };
+
+#endif
 
