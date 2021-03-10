@@ -35,8 +35,8 @@ Game::Game(int width, int height, Difficulty difficultyIn) {
 }
 
 void Game::drawMap() {
-	for (int y = 0; y < this->mapHeight; y++) {
-		for (int x = 0; x < this->mapWidth; x++) {
+	for (int y = 0; y <= this->mapHeight; y++) {
+		for (int x = 0; x <= this->mapWidth; x++) {
 			Console::setCursorPosition(y + this->mapOffsetY, x + this->mapOffsetX);
 			Console::setColour(this->mapColour, this->mapColour);
 			cout << this->mapChar;
@@ -46,8 +46,9 @@ void Game::drawMap() {
 }
 
 void Game::render() {
-
+	
 	this->player.render();
+	this->player.clearSpace(this->player.inArea(this->player.getPreviousPosition(), this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight));
 
 	for (int e = 0; e < this->enemies.size(); e++) {
 		this->enemies[e].render();
@@ -59,43 +60,12 @@ void Game::render() {
 }
 
 void Game::update() {
-
-	this->player.update();
-
-	for (int e = 0; e < this->enemies.size(); e++) {
-		if (this->enemies[e].in_range(this->player)) {
-			this->enemies[e].follow(this->mapWidth, this->mapHeight, this->player);
-		}
+	
+	if (this->player.inArea(this->player.getPosition(), this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight)) {
+		this->player.update();
 	}
-
-	for (int t = 0; t < this->traps.size(); t++) {
-		int trapX = this->traps[t].getPosition()[0];
-		int trapY = this->traps[t].getPosition()[1];
-
-		int playerX = this->player.getPosition()[0];
-		int playerY = this->player.getPosition()[1];
-
-		bool trapPlayerX = trapX == playerX;
-		bool trapPlayerY = trapY == playerY;
-
-		if (trapPlayerX && trapPlayerY) {
-			Console::setCursorPosition(30, 0);
-			cout << "Player should die";
-		}
-
-		for (int e = 0; e < this->enemies.size(); e++) {
-			int enemyX = this->enemies[e].getPosition()[0];
-			int enemyY = this->enemies[e].getPosition()[1];
-
-			bool enemyTrapX = trapX == enemyX;
-			bool enemyTrapY = trapY == enemyY;
-
-			if (enemyTrapX && enemyTrapY) {
-				this->enemies.erase(this->enemies.begin() + e);
-				Console::setCursorPosition(32, 0);
-				cout << "Enemy died";
-			}
-		}
+	else {
+		this->player.contain(this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight);
 	}
 }
 

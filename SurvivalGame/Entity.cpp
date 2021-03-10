@@ -2,48 +2,40 @@
 #include "Game.h"
 
 void Entity::render() {
-	Game* tempGame = new Game();
-	Console::COLOUR gameColour = tempGame->getColour();
 	Console::setColour(this->colour, this->colour);
 	Console::setCursorPosition(this->position[1], this->position[0]);
 	cout << this->getCharacter();
-	Console::setColour(gameColour, gameColour);
-	Console::setCursorPosition(this->prevPosition[1], this->prevPosition[0]);
-	cout << tempGame->getFloorChar();
-	Console::setCursorPosition(this->position[1], this->position[0]);
-	delete tempGame;
 }
 
-bool* Entity::in_area(int x, int w, int y, int h) {
-	int xPos = this->position[0];
-	int yPos = this->position[1];
-	bool inArea[2] = { true, true };
+void Entity::contain(int x, int y, int width, int height) {
+	int currentX = this->getPosition()[0];
+	int currentY = this->getPosition()[1];
 
-	if (xPos < x || xPos > x + w - 1) {
-		inArea[0] = false;
+	if (this->getDistance(currentX, x) > 0) {
+		this->setPosition(x, currentY);
 	}
-
-	if (yPos < y || yPos > y + h - 1) {
-		inArea[1] = false;
+	else if (this->getDistance(currentX, x + width) < 0) {
+		this->setPosition(x + width, currentY);
 	}
-
-	return inArea;
+	else if (this->getDistance(currentY, y) > 0) {
+		this->setPosition(currentX, y);
+	}
+	else if (this->getDistance(currentY, y + height) < 0) {
+		this->setPosition(currentX, y + height);
+	}
 }
 
-bool* Entity::in_area(int* area) {
-	int xPos = this->position[0];
-	int yPos = this->position[1];
-	bool inArea[2] = { true, true };
+void Entity::clearSpace(bool inArea) {
 
-	if (xPos < area[0] || xPos > area[0] + area[1] - 1) {
-		inArea[0] = false;
-	}
+	int currentX = this->position[0];
+	int currentY = this->position[1];
+	int lastX = this->prevPosition[0];
+	int lastY = this->prevPosition[1];
 
-	if (yPos < area[2] || yPos > area[2] + area[3] - 1) {
-		inArea[1] = false;
-	}
-
-	return inArea;
+	Console::setCursorPosition(lastY, lastX);
+	if (inArea) { Console::setColour(Console::GREEN, Console::GREEN); }
+	else { Console::setColour(Console::BLACK, Console::BLACK); }
+	cout << ' ';
 }
 
 void Entity::update() {
@@ -55,6 +47,22 @@ void Entity::Move(int x, int y) {
 	int currentY = this->getPosition()[1];
 
 	this->setPosition(currentX + x, currentY + y);
+}
+
+bool Entity::inArea(int* position, int x, int y, int width, int height) {
+	int posX = position[0];
+	int posY = position[1];
+
+	bool isXInArea = x <= posX;
+	bool isWidthInArea = posX <= (x + width);
+	bool isYInArea = y <= posY;
+	bool isHeightInArea = posY <= (y + height);
+
+	return (isXInArea && isWidthInArea) && (isYInArea && isHeightInArea);
+}
+
+int Entity::getDistance(int from, int to) {
+	return to - from;
 }
 
 Console::COLOUR Entity::getColour() { return this->colour; }

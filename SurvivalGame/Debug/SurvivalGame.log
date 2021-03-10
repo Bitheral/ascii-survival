@@ -1,0 +1,33 @@
+﻿  Controller.cpp
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Enemy.cpp
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Enemy.cpp(15,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Enemy.cpp(16,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Entity.cpp
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+  Game.cpp
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(53,20): warning C4018: '<': signed/unsigned mismatch
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(57,20): warning C4018: '<': signed/unsigned mismatch
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(72,20): warning C4018: '<': signed/unsigned mismatch
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(78,20): warning C4018: '<': signed/unsigned mismatch
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(93,21): warning C4018: '<': signed/unsigned mismatch
+  Player.cpp
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+  Trap.cpp
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+G:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+  Generating Code...
+  SurvivalGame.vcxproj -> G:\University\Y1\C++\SurvivalGame\Debug\SurvivalGame.exe

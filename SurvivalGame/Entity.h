@@ -18,9 +18,12 @@ public:
 	void update();
 
 	void Move(int, int);
+	void contain(int, int, int, int);
+	void clearSpace(bool);
+	
+	bool inArea(int*, int, int, int, int);
 
-	bool* in_area(int, int, int, int);
-	bool* in_area(int*);
+	int getDistance(int, int);
 
 	Console::COLOUR getColour();
 	void setColour(Console::COLOUR);
