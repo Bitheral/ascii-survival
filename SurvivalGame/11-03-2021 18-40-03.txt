@@ -1,0 +1,5 @@
+[ 18:40:03 ] Started new game
+[ 18:40:03 ] Player selected Easy difficulty
+[ 18:40:03 ] Created a grid size of 15, 15 (Rendered as 30, 15)
+[ 18:40:03 ] Generated 5 enemies
+[ 18:40:03 ] Generated 4 traps

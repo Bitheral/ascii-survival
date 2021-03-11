@@ -4,12 +4,12 @@
 void Entity::render() {
 	Console::setColour(this->colour, this->colour);
 	Console::setCursorPosition(this->position[1], this->position[0]);
-	cout << this->getCharacter();
+	cout << this->character;
 }
 
 void Entity::contain(int x, int y, int width, int height) {
-	int currentX = this->getPosition()[0];
-	int currentY = this->getPosition()[1];
+	int currentX = this->position[0];
+	int currentY = this->position[1];
 
 	if (this->getDistance(currentX, x) > 0) {
 		this->setPosition(x, currentY);
@@ -43,8 +43,8 @@ void Entity::update() {
 }
 
 void Entity::Move(int x, int y) {
-	int currentX = this->getPosition()[0];
-	int currentY = this->getPosition()[1];
+	int currentX = this->position[0];
+	int currentY = this->position[1];
 
 	this->setPosition(currentX + x, currentY + y);
 }
@@ -75,11 +75,19 @@ int* Entity::getPreviousPosition() { return this->prevPosition; }
 
 int* Entity::getPosition() { return this->position; }
 void Entity::setPosition(int x, int y) {
-	int currentX = this->getPosition()[0];
-	int currentY = this->getPosition()[1];
+	int currentX = this->position[0];
+	int currentY = this->position[1];
 
 	this->prevPosition[0] = currentX;
 	this->prevPosition[1] = currentY;
 	this->position[0] = x;
 	this->position[1] = y;
+}
+
+void Entity::setState(bool stateIn) {
+	this->state = stateIn;
+}
+
+bool Entity::getState() {
+	return this->state;
 }

@@ -2,6 +2,9 @@
 #define GAME_H
 
 #include <vector>
+#include <fstream>
+#include <chrono>
+#include <string>
 
 #include "console.h"
 #include "Difficulty.h"
@@ -13,7 +16,6 @@ using namespace std;
 class Game {
 private:
 	int mapWidth, mapHeight, mapOffsetX, mapOffsetY;
-	int mapArea[4] = { 0, 0, 0, 0 };
 	char mapChar = ' ';
 	Console::COLOUR mapColour = Console::GREEN;
 
@@ -22,6 +24,10 @@ private:
 	Player player;
 	vector<Enemy> enemies;
 	vector<Trap> traps;
+
+	chrono::steady_clock::time_point gameStart;
+
+	ofstream logFile;
 
 	bool running;
 
@@ -32,9 +38,12 @@ public:
 	void drawMap();
 	void render();
 	void update();
+	void log(string);
+	void stopLogging();
 
 	bool isRunning();
 	char getFloorChar();
+	Player getPlayer();
 	Console::COLOUR getColour();
 };
 

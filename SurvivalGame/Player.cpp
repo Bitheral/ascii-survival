@@ -34,6 +34,12 @@ void Player::update() {
 	case 77:
 		this->Move(1, 0);
 		break;
+	case 'Q':
+	case 'q':
+		this->quit = true;
 	}
+}
 
+bool Player::doQuit() {
+	return this->quit;
 }

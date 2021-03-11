@@ -2,7 +2,7 @@
 
 Trap::Trap() {
 	this->setCharacter('T');
-	this->setColour(Console::RED);
+	this->setColour(Console::GRAY);
 }
 
 Trap::Trap(int x, int y) : Trap() {

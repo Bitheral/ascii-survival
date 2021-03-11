@@ -9,8 +9,6 @@ class Difficulty {
 private:
 	int enemiesAllowed, trapsAllowed;
 	string name;
-protected:
-	int difficultyValue;
 public:
 	Difficulty() {}
 	Difficulty(string nameIn, int enemyCount, int trapCount) {
@@ -25,6 +23,10 @@ public:
 
 	int getTrapCount() {
 		return this->trapsAllowed;
+	}
+
+	string getName() {
+		return this->name;
 	}
 };
 #endif
