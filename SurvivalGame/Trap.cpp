@@ -1,7 +1,6 @@
 #include "Trap.h"
 
 Trap::Trap() {
-	this->setCharacter('T');
 	this->setColour(Console::GRAY);
 }
 

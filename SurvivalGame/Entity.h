@@ -11,7 +11,6 @@ class Entity {
 protected:
 	int position[2] = { 0, 0 };
 	int prevPosition[2] = { 0, 0 };
-	char character = '?';
 	Console::COLOUR colour;
 	int state = true;
 public:
@@ -28,9 +27,6 @@ public:
 
 	Console::COLOUR getColour();
 	void setColour(Console::COLOUR);
-
-	char getCharacter();
-	void setCharacter(char);
 
 	int* getPosition();
 	void setPosition(int x, int y);

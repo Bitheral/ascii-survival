@@ -4,7 +4,7 @@
 void Entity::render() {
 	Console::setColour(this->colour, this->colour);
 	Console::setCursorPosition(this->position[1], this->position[0]);
-	cout << this->character;
+	cout << ' ';
 }
 
 void Entity::contain(int x, int y, int width, int height) {
@@ -67,9 +67,6 @@ int Entity::getDistance(int from, int to) {
 
 Console::COLOUR Entity::getColour() { return this->colour; }
 void Entity::setColour(Console::COLOUR colour) { this->colour = colour;  }
-
-char Entity::getCharacter() { return this->character; }
-void Entity::setCharacter(char character) { this->character = character; }
 
 int* Entity::getPreviousPosition() { return this->prevPosition; }
 

@@ -3,7 +3,6 @@
 #include <cmath>
 
 Enemy::Enemy() {
-    this->setCharacter('E');
     this->setColour(Console::RED);
 }
 
