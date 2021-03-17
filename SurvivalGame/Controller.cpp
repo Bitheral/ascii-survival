@@ -19,7 +19,7 @@ void Controller::start() {
 
 	// Input headings
 	playernameStr = "Player name:";
-	mapSizeStr = "Enter size of map: (Number between -21)";
+	mapSizeStr = "Enter size of map: (Number between 18-21)";
 	difficultyStr = "Select Difficulty";
 	operateStr = "Use arrow keys to select, enter to choose";
 
