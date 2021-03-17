@@ -23,25 +23,29 @@ protected:
 	int health = maxHealth;
 
 public:
+
+	// Rendering functions
 	void render();
-
 	void showHealth(string, int, int, bool);
-
-	void Move(int, int);
-	void contain(int, int, int, int);
 	void clearSpace(bool);
-	bool inArea(Position, int, int, int, int);
 
-	void setPosition(int x, int y);
-
+	// Distance-related functions
+	void Move(int, int);
 	int getDistance(int, int);
 
+	// Grid collision function
+	void contain(int, int, int, int);
+	bool inArea(Position, int, int, int, int);
+
+	/* Getters and setters */
+	/***********************/
 	Console::COLOUR getColour();
 	void setColour(Console::COLOUR);
 
 	Console::COLOUR getDeadColour();
 	void setDeadColour(Console::COLOUR);
 
+	void setPosition(int x, int y);
 	Position getPosition();
 	Position getLastPosition();
 
@@ -51,6 +55,7 @@ public:
 	void decreaseHealth(int);
 	void regenerateHealth(int);
 	int getHealth();
+	/***********************/
 
 };
 

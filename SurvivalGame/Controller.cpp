@@ -5,25 +5,27 @@
 
 void Controller::start() {
 
-	Console::setWindowTitle("Survival Game");
+	// Player-specific inputs
+	int mapSize;
+	string playerName, playernameStr, mapSizeStr;
 
+
+	// Difficulty selection
+	string difficultyStr, operateStr;
+	Difficulty selectedDifficulty;
+	bool isSelectingDifficulty = true;
+	int option = 0;
+	vector<Difficulty> difficultyList{ Difficulty("Easy", 5, 4), Difficulty("Medium", 10, 8), Difficulty("Hard", 15, 12) };
+
+	// Input headings
+	playernameStr = "Player name:";
+	mapSizeStr = "Enter size of map: (Number between -21)";
+	difficultyStr = "Select Difficulty";
+	operateStr = "Use arrow keys to select, enter to choose";
+
+	Console::setWindowTitle("Survival Game");
 	Console::setColour(Console::WHITE, Console::BLACK);
 	Console::clear();
-
-	vector<Difficulty> difficultyList;
-	difficultyList.push_back(Difficulty("Easy", 5, 4));
-	difficultyList.push_back(Difficulty("Medium", 10, 8));
-	difficultyList.push_back(Difficulty("Hard", 15, 12));
-
-	bool isSelectingDifficulty = true;
-	Difficulty selectedDifficulty;
-	int option = 0;
-
-	string playernameStr = "Player name:";
-	string mapSizeStr = "Enter size of map: (Number between -21)";
-	
-	int mapSize;
-	string playerName;
 
 	Console::setCursorPosition(6, 64 - (playernameStr.length() / 2));
 	cout << playernameStr;
@@ -39,8 +41,6 @@ void Controller::start() {
 
 	Console::clear();
 
-	string difficultyStr =  "Select Difficulty";
-	string operateStr = "Use arrow keys to select, enter to choose";
 	Console::setCursorPosition(6, 64 - (difficultyStr.length() / 2));
 	cout << difficultyStr;
 	Console::setCursorPosition(7, 64 - (operateStr.length() / 2));
@@ -50,7 +50,7 @@ void Controller::start() {
 		Console::setCursorPosition(9, 64);
 		if (option < 0) { option = 0; }
 		else if (option >= difficultyList.size()) { option = difficultyList.size() - 1; }
-		
+
 		for (int i = 0; i < difficultyList.size(); i++) {
 			if (i == option) { Console::setColour(Console::BLACK, Console::WHITE); }
 			else { Console::setColour(Console::WHITE, Console::BLACK); }
@@ -93,8 +93,7 @@ void Controller::start() {
 		if (game->hasPlayerWon()) {
 			resultColour = Console::GREEN;
 			result = "won";
-		}
-		else {
+		} else {
 			resultColour = Console::RED;
 			result = "lost";
 		}
@@ -111,8 +110,7 @@ void Controller::start() {
 		cout << gameResult << endl;
 		Console::setCursorPosition(Console::getCursorPosition().Y, 64 - (enemiesKilledStr.length() / 2));
 		cout << enemiesKilledStr << endl;
-	}
-	else {
+	} else {
 		Console::setColour(Console::WHITE, Console::BLACK);
 		Console::clear();
 	}

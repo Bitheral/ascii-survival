@@ -3,7 +3,6 @@
 #include <cstdlib>
 
 string getCurrentDateTime() {
-
 	time_t rawtime = time(NULL);
 	struct tm timeinfo;
 	char buffer[80];
@@ -18,32 +17,22 @@ string getCurrentDateTime() {
 
 }
 
-Game::Game() {}
-
 Game::Game(int width, int height, Difficulty difficultyIn) {
 	this->gameStart = chrono::steady_clock::now();
 	srand(static_cast<unsigned int>(time(0)));
 
 	this->difficulty = difficultyIn;
 
-	if (width >= 21) {
-		this->mapWidth = 42;
-	} else if (width <= 18) {
-		this->mapWidth = 38;
-	} else {
-		this->mapWidth = width * 2;
-	}
+	if (width >= 21) { this->mapWidth = 42; }
+	else if (width <= 18) { this->mapWidth = 38; }
+	else { this->mapWidth = width * 2; }
 
-	if (height >= 21) {
-		this->mapHeight = 21;
-	} else if (height <= 18) {
-		this->mapHeight = 18;
-	} else {
-		this->mapHeight = height;
-	}
+	if (height >= 21) { this->mapHeight = 21; }
+	else if (height <= 18) { this->mapHeight = 18; }
+	else { this->mapHeight = height; }
 	
 	this->mapOffsetX = (Console::getTextBufferSize().X / 2) - (this->mapWidth / 2);
-	this->mapOffsetY = 1; //(Console::getTextBufferSize().Y / 5) - (this->mapHeight / 2);
+	this->mapOffsetY = 1;
 
 	this->running = true;
 	
@@ -112,10 +101,7 @@ void Game::render() {
 		}
 	}
 
-	for (int t = 0; t < this->traps.size(); t++) {
-		this->traps[t].render();
-	}
-
+	for (int t = 0; t < this->traps.size(); t++) { this->traps[t].render(); }
 	Console::setCursorPosition(this->player.getPosition().y, this->player.getPosition().x);
 }
 
@@ -125,11 +111,8 @@ void Game::update() {
 			this->player.update();
 			this->player.regenerateHealth(1);
 		}
-		else {
-			this->player.contain(this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight);
-		}
-	}
-	else {
+		else { this->player.contain(this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight); }
+	} else {
 		this->playerWon = false;
 		this->running = false;
 	}
@@ -146,16 +129,12 @@ void Game::update() {
 							this->player.setHitting(false);
 						}
 						this->player.decreaseHealth(2);
-					}
-					else {
+					} else {
 						enemy.regenerateHealth(1);
 						enemy.follow(this->player);
 					}
 				}
-			}
-			else {
-				enemy.contain(this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight);
-			}
+			} else { enemy.contain(this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight); }
 		}
 	}
 
@@ -178,9 +157,7 @@ void Game::update() {
 	}
 	int enemiesKilled = 0;
 	for(int e = 0; e < this->enemies.size(); e++) {
-		if (!this->enemies[e].getState()) {
-			enemiesKilled += 1;
-		}
+		if (!this->enemies[e].getState()) { enemiesKilled += 1;}
 		this->killedEnemies = enemiesKilled;
 	}
 
@@ -196,26 +173,9 @@ void Game::log(string playername, bool hasQuit) {
 	else { this->logFile << "[" << getCurrentDateTime() << "] [" << playername << "] " << this->killedEnemies << " Enemies killed (Player quit)" << endl; }
 }
 
-void Game::stopLogging() {
-	this->logFile.close();
-}
-
-bool Game::isRunning() {
-	return this->running;
-}
-
-bool Game::hasPlayerWon() {
-	return this->playerWon;
-}
-
-Console::COLOUR Game::getColour() {
-	return this->mapColour;
-}
-
-Player Game::getPlayer() {
-	return this->player;
-}
-
-int Game::getKilledEnemies() {
-	return this->killedEnemies;
-}
+void Game::stopLogging() { this->logFile.close(); }
+bool Game::isRunning() { return this->running; }
+bool Game::hasPlayerWon() { return this->playerWon; }
+Console::COLOUR Game::getColour() { return this->mapColour; }
+Player Game::getPlayer() { return this->player; }
+int Game::getKilledEnemies() { return this->killedEnemies; }

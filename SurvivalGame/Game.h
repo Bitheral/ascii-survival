@@ -17,6 +17,8 @@ class Game {
 private:
 	int mapWidth, mapHeight, mapOffsetX, mapOffsetY;
 	Console::COLOUR mapColour = Console::GREEN;
+	chrono::steady_clock::time_point gameStart;
+	ofstream logFile;
 
 	Difficulty difficulty;
 
@@ -26,28 +28,29 @@ private:
 
 	int killedEnemies;
 
-	chrono::steady_clock::time_point gameStart;
-
-	ofstream logFile;
-
 	bool running;
 	bool playerWon;
 
 public:
-	Game();
+	Game() {}
 	Game(int, int, Difficulty);
 
+	// Rendering functions
+	void render();
 	void drawMap();
 	void showControls();
-	void render();
+
+	// Other functions
 	void update();
+	
+	// Log functions
 	void log(string, bool);
 	void stopLogging();
 
+	// Getters
 	bool isRunning();
 	bool hasPlayerWon();
 	Player getPlayer();
-
 	Console::COLOUR getColour();
 	int getKilledEnemies();
 };

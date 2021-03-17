@@ -12,10 +12,12 @@ public:
 
 	void update();
 
-	bool doQuit();
-
+	// Setters
 	void setHitting(bool);
+
+	// Getters
 	bool isHitting();
+	bool doQuit();
 };
 
 #endif

@@ -10,8 +10,9 @@ void Entity::render() {
 }
 
 void Entity::showHealth(string name, int x, int y, bool isAlive) {
-	Console::setCursorPosition(y, x);
 	string healthStr = name + " Healthbar";
+
+	Console::setCursorPosition(y, x);
 	Console::setColour(Console::WHITE, Console::BLACK);
 	cout << healthStr;
 	Console::setCursorPosition(y, x + healthStr.length() + 2);
@@ -36,24 +37,15 @@ void Entity::showHealth(string name, int x, int y, bool isAlive) {
 }
 
 void Entity::contain(int x, int y, int width, int height) {
-	if (this->getDistance(this->currentPos.x, x) > 0) {
-		this->setPosition(x, this->currentPos.y);
-	}
-	else if (this->getDistance(this->currentPos.x, x + width) < 0) {
-		this->setPosition(x + width, this->currentPos.y);
-	}
-	else if (this->getDistance(this->currentPos.y, y) > 0) {
-		this->setPosition(this->currentPos.x, y);
-	}
-	else if (this->getDistance(this->currentPos.y, y + height) < 0) {
-		this->setPosition(this->currentPos.x, y + height);
-	}
+	if (this->getDistance(this->currentPos.x, x) > 0) { this->setPosition(x, this->currentPos.y); }
+	else if (this->getDistance(this->currentPos.x, x + width) < 0) { this->setPosition(x + width, this->currentPos.y); }
+	else if (this->getDistance(this->currentPos.y, y) > 0) { this->setPosition(this->currentPos.x, y); }
+	else if (this->getDistance(this->currentPos.y, y + height) < 0) { this->setPosition(this->currentPos.x, y + height); }
 }
 
 void Entity::clearSpace(bool inArea) {
-	if (this->lastPos.x == this->currentPos.x && this->lastPos.y == this->currentPos.y) {
-		return;
-	} else {
+	if (this->lastPos.x == this->currentPos.x && this->lastPos.y == this->currentPos.y) { return; }
+	else {
 		Console::setCursorPosition(this->lastPos.y, this->lastPos.x);
 		if (inArea) { Console::setColour(Console::GREEN, Console::GREEN); }
 		else { Console::setColour(Console::BLACK, Console::BLACK); }

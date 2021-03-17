@@ -10,7 +10,7 @@ private:
 	int enemiesAllowed, trapsAllowed;
 	string name;
 public:
-	Difficulty();
+	Difficulty() {}
 	Difficulty(string nameIn, int enemyCount, int trapCount);
 
 	int getEnemyCount();

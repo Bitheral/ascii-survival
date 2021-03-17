@@ -7,9 +7,7 @@ Enemy::Enemy() {
     this->setDeadColour(Console::RED);
 }
 
-Enemy::Enemy(int x, int y) : Enemy() {
-    this->setPosition(x, y);
-}
+Enemy::Enemy(int x, int y) : Enemy() { this->setPosition(x, y); }
 
 bool Enemy::in_range(Entity other) {
     int xDistance = pow(this->currentPos.x - other.getPosition().x, 2);
@@ -19,42 +17,29 @@ bool Enemy::in_range(Entity other) {
 
 void Enemy::follow(Entity other) {
 
-    int xDist = this->currentPos.x - other.getPosition().x;
-    int xDistSq = pow(xDist, 2);
-
-    int yDist = this->currentPos.y - other.getPosition().y;
-    int yDistSq = pow(yDist, 2);
-
-    int distanceSq = xDistSq + yDistSq;
-    int distance = sqrt(distanceSq);
+    int xDist, xDistSq, yDist, yDistSq;
+    int distance, distanceSq;
 
     bool shouldMoveX;
-
-    int less = -1;
-    int more = 1;
-
     int moveBy = 0;
+
+    xDist = this->currentPos.x - other.getPosition().x;
+    yDist = this->currentPos.y - other.getPosition().y;
+    xDistSq = pow(xDist, 2);
+    yDistSq = pow(yDist, 2);
+
+    distanceSq = xDistSq + yDistSq;
+    distance = sqrt(distanceSq);
 
     shouldMoveX = abs(xDist) > abs(yDist);
 
     if (shouldMoveX) {
-        if (xDist > 0) {
-            moveBy = -1;
-        }
-        else if (xDist < 0) {
-            moveBy = 1;
-        }
-
+        if (xDist > 0) { moveBy = -1; }
+        else if (xDist < 0) { moveBy = 1; }
         this->Move(moveBy, 0);
-    }
-    else {
-        if (yDist > 0) {
-            moveBy = -1;
-        }
-        else if (yDist < 0) {
-            moveBy = 1;
-        }
-
+    } else {
+        if (yDist > 0) { moveBy = -1; }
+        else if (yDist < 0) { moveBy = 1; }
         this->Move(0, moveBy);
     }
 }
