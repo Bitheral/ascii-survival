@@ -3,7 +3,8 @@
 #include <cmath>
 
 Enemy::Enemy() {
-    this->setColour(Console::RED);
+    this->setColour(Console::LIGHT_RED);
+    this->setDeadColour(Console::RED);
 }
 
 Enemy::Enemy(int x, int y) : Enemy() {
@@ -11,28 +12,49 @@ Enemy::Enemy(int x, int y) : Enemy() {
 }
 
 bool Enemy::in_range(Entity other) {
-    int xDistance = pow(this->position[0] - other.getPosition()[0], 2);
-    int yDistance = pow(this->position[1] - other.getPosition()[1], 2);
+    int xDistance = pow(this->currentPos.x - other.getPosition().x, 2);
+    int yDistance = pow(this->currentPos.y - other.getPosition().y, 2);
     return sqrt(xDistance + yDistance) <= this->range_radius * 2;
 }
 
-void Enemy::follow(int mapWidth, int mapHeight, Entity player) {
+void Enemy::follow(Entity other) {
 
-    int dx = player.getPosition()[0] - this->position[0];
-    int dy = player.getPosition()[1] - this->position[1];
-    bool moveXAxis;
-    if (abs(dx) <= mapWidth && abs(dy) <= mapHeight) {
-        moveXAxis = abs(dx) > abs(dy);
-    }
+    int xDist = this->currentPos.x - other.getPosition().x;
+    int xDistSq = pow(xDist, 2);
 
-    if (abs(dx) > 1 && abs(dy) > 1) {
-        moveXAxis = rand() % 1;
-    }
-    
-    if (moveXAxis) {
-        this->Move(min(dx, -1) ? dx > 0 : max(dx, 1), 0);
+    int yDist = this->currentPos.y - other.getPosition().y;
+    int yDistSq = pow(yDist, 2);
+
+    int distanceSq = xDistSq + yDistSq;
+    int distance = sqrt(distanceSq);
+
+    bool shouldMoveX;
+
+    int less = -1;
+    int more = 1;
+
+    int moveBy = 0;
+
+    shouldMoveX = abs(xDist) > abs(yDist);
+
+    if (shouldMoveX) {
+        if (xDist > 0) {
+            moveBy = -1;
+        }
+        else if (xDist < 0) {
+            moveBy = 1;
+        }
+
+        this->Move(moveBy, 0);
     }
     else {
-        this->Move(0, min(dy, -1) ? dx > 0 : max(dy, 1));
+        if (yDist > 0) {
+            moveBy = -1;
+        }
+        else if (yDist < 0) {
+            moveBy = 1;
+        }
+
+        this->Move(0, moveBy);
     }
 }

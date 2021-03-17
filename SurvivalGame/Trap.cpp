@@ -1,7 +1,7 @@
 #include "Trap.h"
 
 Trap::Trap() {
-	this->setColour(Console::GRAY);
+	this->setColour(Console::BLACK);
 }
 
 Trap::Trap(int x, int y) : Trap() {

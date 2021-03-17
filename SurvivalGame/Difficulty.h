@@ -10,23 +10,11 @@ private:
 	int enemiesAllowed, trapsAllowed;
 	string name;
 public:
-	Difficulty() {}
-	Difficulty(string nameIn, int enemyCount, int trapCount) {
-		this->name = nameIn;
-		this->enemiesAllowed = enemyCount;
-		this->trapsAllowed = trapCount;
-	}
+	Difficulty();
+	Difficulty(string nameIn, int enemyCount, int trapCount);
 
-	int getEnemyCount() {
-		return this->enemiesAllowed;
-	}
-
-	int getTrapCount() {
-		return this->trapsAllowed;
-	}
-
-	string getName() {
-		return this->name;
-	}
+	int getEnemyCount();
+	int getTrapCount();
+	string getName();
 };
 #endif

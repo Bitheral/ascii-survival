@@ -2,89 +2,104 @@
 #include "Game.h"
 
 void Entity::render() {
-	Console::setColour(this->colour, this->colour);
-	Console::setCursorPosition(this->position[1], this->position[0]);
+	if (this->getState()) { Console::setColour(this->colour, this->colour); }
+	else { Console::setColour(this->deadColour, this->deadColour); }
+
+	Console::setCursorPosition(this->currentPos.y, this->currentPos.x);
 	cout << ' ';
 }
 
-void Entity::contain(int x, int y, int width, int height) {
-	int currentX = this->position[0];
-	int currentY = this->position[1];
+void Entity::showHealth(string name, int x, int y, bool isAlive) {
+	Console::setCursorPosition(y, x);
+	string healthStr = name + " Healthbar";
+	Console::setColour(Console::WHITE, Console::BLACK);
+	cout << healthStr;
+	Console::setCursorPosition(y, x + healthStr.length() + 2);
+	if (isAlive) {
+		for (int h = 0; h < this->health / 10; h++) {
+			Console::setColour(this->colour, this->colour);
+			cout << ' ';
+		}
 
-	if (this->getDistance(currentX, x) > 0) {
-		this->setPosition(x, currentY);
+		for (int d = this->health / 10; d < this->maxHealth / 10; d++) {
+			Console::setColour(this->deadColour, this->deadColour);
+			cout << ' ';
+		}
 	}
-	else if (this->getDistance(currentX, x + width) < 0) {
-		this->setPosition(x + width, currentY);
+	else {
+		Console::setCursorPosition(y, x);
+		for (int i = 0; i < x + healthStr.length() + 2 + this->maxHealth / 10; i++) {
+			Console::setColour(Console::BLACK, Console::BLACK);
+			cout << ' ';
+		}
 	}
-	else if (this->getDistance(currentY, y) > 0) {
-		this->setPosition(currentX, y);
+}
+
+void Entity::contain(int x, int y, int width, int height) {
+	if (this->getDistance(this->currentPos.x, x) > 0) {
+		this->setPosition(x, this->currentPos.y);
 	}
-	else if (this->getDistance(currentY, y + height) < 0) {
-		this->setPosition(currentX, y + height);
+	else if (this->getDistance(this->currentPos.x, x + width) < 0) {
+		this->setPosition(x + width, this->currentPos.y);
+	}
+	else if (this->getDistance(this->currentPos.y, y) > 0) {
+		this->setPosition(this->currentPos.x, y);
+	}
+	else if (this->getDistance(this->currentPos.y, y + height) < 0) {
+		this->setPosition(this->currentPos.x, y + height);
 	}
 }
 
 void Entity::clearSpace(bool inArea) {
-
-	int currentX = this->position[0];
-	int currentY = this->position[1];
-	int lastX = this->prevPosition[0];
-	int lastY = this->prevPosition[1];
-
-	Console::setCursorPosition(lastY, lastX);
-	if (inArea) { Console::setColour(Console::GREEN, Console::GREEN); }
-	else { Console::setColour(Console::BLACK, Console::BLACK); }
-	cout << ' ';
+	if (this->lastPos.x == this->currentPos.x && this->lastPos.y == this->currentPos.y) {
+		return;
+	} else {
+		Console::setCursorPosition(this->lastPos.y, this->lastPos.x);
+		if (inArea) { Console::setColour(Console::GREEN, Console::GREEN); }
+		else { Console::setColour(Console::BLACK, Console::BLACK); }
+		cout << ' ';
+	}
 }
 
-void Entity::update() {
-
-}
-
-void Entity::Move(int x, int y) {
-	int currentX = this->position[0];
-	int currentY = this->position[1];
-
-	this->setPosition(currentX + x, currentY + y);
-}
-
-bool Entity::inArea(int* position, int x, int y, int width, int height) {
-	int posX = position[0];
-	int posY = position[1];
-
-	bool isXInArea = x <= posX;
-	bool isWidthInArea = posX <= (x + width);
-	bool isYInArea = y <= posY;
-	bool isHeightInArea = posY <= (y + height);
+bool Entity::inArea(Position position, int x, int y, int width, int height) {
+	bool isXInArea = x <= position.x;
+	bool isWidthInArea = position.x <= (x + width);
+	bool isYInArea = y <= position.y;
+	bool isHeightInArea = position.y <= (y + height);
 
 	return (isXInArea && isWidthInArea) && (isYInArea && isHeightInArea);
 }
 
-int Entity::getDistance(int from, int to) {
-	return to - from;
+void Entity::setPosition(int x, int y) {
+	this->lastPos.x = this->currentPos.x;
+	this->lastPos.y = this->currentPos.y;
+	this->currentPos.x = x;
+	this->currentPos.y = y;
 }
+
+void Entity::decreaseHealth(int amount) { 
+	this->health = this->health - amount;
+	if (this->health <= 0) { this->setState(false); }
+}
+
+void Entity::regenerateHealth(int amount) {
+	this->health = this->health + amount;
+	if (this->health >= 100) { this->health = 100; }
+}
+
+int Entity::getDistance(int from, int to) { return to - from; }
+void Entity::Move(int x, int y) { this->setPosition(this->currentPos.x + x, this->currentPos.y + y); }
 
 Console::COLOUR Entity::getColour() { return this->colour; }
-void Entity::setColour(Console::COLOUR colour) { this->colour = colour;  }
+void Entity::setColour(Console::COLOUR colour) { this->colour = colour; }
 
-int* Entity::getPreviousPosition() { return this->prevPosition; }
+Console::COLOUR Entity::getDeadColour() { return this->deadColour; }
+void Entity::setDeadColour(Console::COLOUR colour) { this->deadColour = colour; }
 
-int* Entity::getPosition() { return this->position; }
-void Entity::setPosition(int x, int y) {
-	int currentX = this->position[0];
-	int currentY = this->position[1];
+Position Entity::getLastPosition() { return this->lastPos; }
+Position Entity::getPosition() { return this->currentPos; }
 
-	this->prevPosition[0] = currentX;
-	this->prevPosition[1] = currentY;
-	this->position[0] = x;
-	this->position[1] = y;
-}
+void Entity::setState(bool stateIn) { this->state = stateIn; }
+bool Entity::getState() { return this->state; }
 
-void Entity::setState(bool stateIn) {
-	this->state = stateIn;
-}
-
-bool Entity::getState() {
-	return this->state;
-}
+int Entity::getHealth() { return this->health; }
