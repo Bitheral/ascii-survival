@@ -120,7 +120,7 @@ void Game::update() {
 		Enemy &enemy = this->enemies[e];
 		if (enemy.getState()) {
 			if (enemy.inArea(enemy.getPosition(), this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight)) {
-				if (enemy.in_range(this->player)) {
+				if (enemy.inRange(this->player)) {
 					if (enemy.getPosition().x == this->player.getPosition().x &&
 						enemy.getPosition().y == this->player.getPosition().y) {
 						if (this->player.isHitting()) {

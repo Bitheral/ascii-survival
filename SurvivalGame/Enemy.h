@@ -9,7 +9,7 @@ public:
 	Enemy();
 	Enemy(int, int);
 
-	bool in_range(Entity);
+	bool inRange(Entity);
 	void follow(Entity);
 };
 

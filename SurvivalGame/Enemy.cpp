@@ -9,7 +9,7 @@ Enemy::Enemy() {
 
 Enemy::Enemy(int x, int y) : Enemy() { this->setPosition(x, y); }
 
-bool Enemy::in_range(Entity other) {
+bool Enemy::inRange(Entity other) {
     int xDistance = pow(this->currentPos.x - other.getPosition().x, 2);
     int yDistance = pow(this->currentPos.y - other.getPosition().y, 2);
     return sqrt(xDistance + yDistance) <= this->rangeRadius * 2;
