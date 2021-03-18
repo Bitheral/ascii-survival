@@ -27,6 +27,7 @@ void Controller::start() {
 	Console::setColour(Console::WHITE, Console::BLACK);
 	Console::clear();
 
+	// Display playername in centre of console
 	Console::setCursorPosition(6, 64 - (playernameStr.length() / 2));
 	cout << playernameStr;
 	Console::setCursorPosition(7, 64);
@@ -34,6 +35,7 @@ void Controller::start() {
 
 	Console::clear();
 
+	// Display Map size in centre of console
 	Console::setCursorPosition(6, 64 - (mapSizeStr.length() / 2));
 	cout << mapSizeStr << endl;
 	Console::setCursorPosition(7, 64);
@@ -41,6 +43,7 @@ void Controller::start() {
 
 	Console::clear();
 
+	// Display difficulty list in centre of console
 	Console::setCursorPosition(6, 64 - (difficultyStr.length() / 2));
 	cout << difficultyStr;
 	Console::setCursorPosition(7, 64 - (operateStr.length() / 2));
@@ -77,19 +80,31 @@ void Controller::start() {
 	Console::setColour(Console::WHITE, Console::BLACK);
 	Console::clear();
 
+
+	// Create new game instance
 	Game* game = new Game(mapSize, mapSize, selectedDifficulty);
 
+
+	// Only render map and controls once
+	// Prevents from continuously re-rendering map
 	game->drawMap();
 	game->showControls();
 
+	// Run render and update only whilst the game is running,
+	// or only until player wants to quit
 	while (game->isRunning() && !game->getPlayer().doQuit()) {
 		game->render();
 		game->update();
 	}
 
+	// Check if player has quit or
+	// not after after game has ended
 	if (!game->getPlayer().doQuit()) {
 		string result;
 		Console::COLOUR resultColour;
+
+		// If player won, set console background to Green and result text to "won"
+		// if not, set console background to Red and result text to "lost"
 		if (game->hasPlayerWon()) {
 			resultColour = Console::GREEN;
 			result = "won";
@@ -98,9 +113,12 @@ void Controller::start() {
 			result = "lost";
 		}
 
+		// Set background to resultColour
 		Console::setColour(resultColour, resultColour);
 		Console::clear();
 
+		// Print win/lost statement with
+		// how many enemies were killed
 		string gameResult = "You " + result + "!";
 		string enemiesKilledStr = "Enemies killed: " + to_string(game->getKilledEnemies());
 		Console::setColour(Console::WHITE, resultColour);
@@ -109,10 +127,12 @@ void Controller::start() {
 		Console::setCursorPosition(Console::getCursorPosition().Y, 64 - (enemiesKilledStr.length() / 2));
 		cout << enemiesKilledStr << endl;
 	} else {
+		// Draw blank console due to player quit
 		Console::setColour(Console::WHITE, Console::BLACK);
 		Console::clear();
 	}
 
+	// Log game result to "result.txt"
 	game->log(playerName, game->getPlayer().doQuit());
 	game->stopLogging();
 }

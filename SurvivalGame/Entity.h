@@ -24,7 +24,7 @@ public:
 
 	// Rendering functions
 	void render();
-	void showHealth(string, int, int, bool);
+	void showHealth(string, int, int);
 	void clearSpace(bool);
 
 	// Distance-related functions
