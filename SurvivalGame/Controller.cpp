@@ -101,8 +101,6 @@ void Controller::start() {
 		Console::setColour(resultColour, resultColour);
 		Console::clear();
 
-		Sleep(2);
-
 		string gameResult = "You " + result + "!";
 		string enemiesKilledStr = "Enemies killed: " + to_string(game->getKilledEnemies());
 		Console::setColour(Console::WHITE, resultColour);
