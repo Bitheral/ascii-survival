@@ -12,7 +12,7 @@ Enemy::Enemy(int x, int y) : Enemy() { this->setPosition(x, y); }
 bool Enemy::in_range(Entity other) {
     int xDistance = pow(this->currentPos.x - other.getPosition().x, 2);
     int yDistance = pow(this->currentPos.y - other.getPosition().y, 2);
-    return sqrt(xDistance + yDistance) <= this->range_radius * 2;
+    return sqrt(xDistance + yDistance) <= this->rangeRadius * 2;
 }
 
 void Enemy::follow(Entity other) {

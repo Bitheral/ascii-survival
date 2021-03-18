@@ -4,7 +4,7 @@
 #include "Entity.h"
 class Enemy : public Entity {
 private:
-	int range_radius = 2;
+	int rangeRadius = 2;
 public:
 	Enemy();
 	Enemy(int, int);
