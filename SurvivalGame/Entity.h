@@ -14,10 +14,8 @@ struct Position {
 
 class Entity {
 protected:
-	Position currentPos = { 0, 0 };
-	Position lastPos = { 0, 0 };
-	Console::COLOUR colour;
-	Console::COLOUR deadColour;
+	Position currentPos = { 0, 0 }, lastPos = { 0, 0 };
+	Console::COLOUR colour, deadColour;
 	bool state = true;
 	int maxHealth = 100;
 	int health = maxHealth;
