@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <fstream>
-#include <chrono>
 #include <string>
 
 #include "console.h"
@@ -17,7 +16,6 @@ class Game {
 private:
 	int mapWidth, mapHeight, mapOffsetX, mapOffsetY;
 	Console::COLOUR mapColour = Console::GREEN;
-	chrono::steady_clock::time_point gameStart;
 	ofstream logFile;
 
 	Difficulty difficulty;

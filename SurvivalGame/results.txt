@@ -44,3 +44,4 @@
 [16-03-2021 17-32-35] [21] 1 Enemies killed (Player quit)
 [16-03-2021 17-33-21] [21] 1 Enemies killed (Player quit)
 [17-03-2021 11-29-04] [Nathan] You Lost! 3 Enemies killed
+[17-03-2021 17-38-59] [Nathan] 0 Enemies killed (Player quit)

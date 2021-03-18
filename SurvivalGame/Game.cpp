@@ -18,7 +18,6 @@ string getCurrentDateTime() {
 }
 
 Game::Game(int width, int height, Difficulty difficultyIn) {
-	this->gameStart = chrono::steady_clock::now();
 	srand(static_cast<unsigned int>(time(0)));
 
 	this->difficulty = difficultyIn;
