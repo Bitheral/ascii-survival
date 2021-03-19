@@ -27,19 +27,8 @@ Game::Game(int width, int height, Difficulty difficultyIn) {
 	srand(static_cast<unsigned int>(time(0)));
 
 	this->difficulty = difficultyIn;
-
-
-	// Due to rendering errors, limit was required
-	// Disallow user to have too small of grid since
-	// player will most likely die instantly, and disallow
-	// grid to be too large due to render error
-	if (width >= 21) { this->mapWidth = 42; }
-	else if (width <= 18) { this->mapWidth = 38; }
-	else { this->mapWidth = width * 2; }
-
-	if (height >= 21) { this->mapHeight = 21; }
-	else if (height <= 18) { this->mapHeight = 18; }
-	else { this->mapHeight = height; }
+	this->mapWidth = width * 2;
+	this->mapHeight = height;
 	
 	// Position grid on Console
 	this->mapOffsetX = (Console::getTextBufferSize().X / 2) - (this->mapWidth / 2);
