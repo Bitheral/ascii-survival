@@ -107,11 +107,13 @@ void Game::render() {
 		Enemy &enemy = this->enemies[e];
 		enemy.render();
 
-		// Only render clearSpace if enemy is alive
+		// Only render clearSpace if
+		// player is not on the same position
 		// Rendering clearSpace when enemy is dead
 		// causes player to 'disappear' if player 
 		// position is on enemy last position
-		if (enemy.getState()) {
+		if (enemy.getState() ||
+			(this->player.getPosition().x != enemy.getLastPosition().y && this->player.getPosition().y != enemy.getLastPosition().y)) {
 			enemy.clearSpace(enemy.inArea(enemy.getLastPosition(), this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight));
 		}
 
@@ -135,12 +137,14 @@ void Game::update() {
 		if (this->player.inArea(this->player.getPosition(), this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight)) {
 			this->player.update();
 			this->player.regenerateHealth(1);
-		} else {
+		}
+		else {
 			// Player is not in grid, force player
 			// back in grid
-			this->player.contain(this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight); 
+			this->player.contain(this->mapOffsetX, this->mapOffsetY, this->mapWidth, this->mapHeight);
 		}
-	} else {
+	}
+	else {
 		// Player has died, end game
 		this->playerWon = false;
 		this->running = false;
@@ -164,12 +168,17 @@ void Game::update() {
 					if (enemy.getPosition().x == this->player.getPosition().x &&
 						enemy.getPosition().y == this->player.getPosition().y) {
 
-						// Decrease health due to playerHit
+						// Decrease health due to Player hit
 						if (this->player.isHitting()) {
 							enemy.decreaseHealth(2);
 							this->player.setHitting(false);
 						}
+
 						this->player.decreaseHealth(2);
+					} else if(enemy.getPosition().x == this->player.getLastPosition().x &&
+						enemy.getPosition().y == this->player.getLastPosition().y) {
+						this->player.decreaseHealth(2);
+						enemy.follow(this->player);
 					} else {
 						enemy.regenerateHealth(1);
 						enemy.follow(this->player);
@@ -232,10 +241,10 @@ void Game::log(string playername, bool hasQuit) {
 	string result = this->playerWon ? "Won" : "Lost";
 	if(!hasQuit) {
 		// Output to logfile how many enemies killed, with the playername
-		this->logFile << "[" << getCurrentDateTime() << "] [" << playername << "] " << "You " << result << "! "  << this->killedEnemies << " Enemies killed" << endl;
+		this->logFile << "[" << getCurrentDateTime() << "] [" << playername << "] [" << this->difficulty.getName() << "] " << "You " << result << "! "  << this->killedEnemies << " Enemies killed" << endl;
 	} else {
 		// Output to logfile how many enemies killed before game quit with playername
-		this->logFile << "[" << getCurrentDateTime() << "] [" << playername << "] " << this->killedEnemies << " Enemies killed (Player quit)" << endl; 
+		this->logFile << "[" << getCurrentDateTime() << "] [" << playername << "] [" << this->difficulty.getName() << "] " << this->killedEnemies << " Enemies killed (Player quit)" << endl; 
 	}
 }
 void Game::stopLogging() { this->logFile.close(); }

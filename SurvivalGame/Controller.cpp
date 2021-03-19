@@ -1,3 +1,4 @@
+#include <iostream>
 #include <conio.h>
 
 #include "Controller.h"
@@ -41,6 +42,60 @@ void Controller::start() {
 	Console::setCursorPosition(7, 64);
 	cin >> mapSize;
 
+	// Checks if the mapSize has
+	// correct data type
+	while (cin.fail()) {
+
+		// Remove newline
+		cin.clear();
+		cin.ignore(1000, '\n');
+
+		string validationStr = "Looks like you didn't enter an integer. Please try again";
+		Console::setCursorPosition(9, 64 - (validationStr.length() / 2));
+		cout << validationStr;
+
+		// Clear input line
+		Console::setCursorPosition(7, 64);
+		for (int i = 0; i < 32; i++) {
+			cout << ' ';
+		}
+
+		Console::setCursorPosition(7, 64);
+		cin >> mapSize;
+
+		// Clear validation string
+		Console::setCursorPosition(9, 64 - (validationStr.length() / 2));
+		for (int i = 0; i < validationStr.length(); i++) {
+			cout << ' ';
+		}
+	}
+
+	// Checks if the mapSize entered is valid
+	while (mapSize < 18 || mapSize > 21) {
+		string validationStr;
+
+		// Set correct validation string depending on mapSize
+		if (mapSize > 21) { validationStr = "Map size is too big!"; }
+		else if (mapSize < 18) { validationStr = "Map size is too small!"; }
+		Console::setCursorPosition(9, 64 - (validationStr.length() / 2));
+		cout << validationStr;
+
+		// Clear input line
+		Console::setCursorPosition(7, 64);
+		for (int i = 0; i < to_string(mapSize).length(); i++) {
+			cout << ' ';
+		}
+
+		Console::setCursorPosition(7, 64);
+		cin >> mapSize;
+
+		// Clear validation string
+		Console::setCursorPosition(9, 64 - (validationStr.length() / 2));
+		for (int i = 0; i < validationStr.length(); i++) {
+			cout << ' ';
+		}
+	}
+
 	Console::clear();
 
 	// Display difficulty list in centre of console
@@ -51,9 +106,14 @@ void Controller::start() {
 
 	while (isSelectingDifficulty) {
 		Console::setCursorPosition(9, 64);
+
+		// Limit options to select to be within
+		// the size of the difficulty list
 		if (option < 0) { option = 0; }
 		else if (option >= difficultyList.size()) { option = difficultyList.size() - 1; }
 
+		// Loop through all difficulties
+		// and highlight the selected difficulty
 		for (int i = 0; i < difficultyList.size(); i++) {
 			if (i == option) { Console::setColour(Console::BLACK, Console::WHITE); }
 			else { Console::setColour(Console::WHITE, Console::BLACK); }
@@ -62,15 +122,21 @@ void Controller::start() {
 			cout << "  " << difficultyList[i].getName() << "  " << endl;
 		}
 
+		// Get key pressed to
+		// change or select the
+		// current difficulty
 		int key = _getch();
 		switch (key) {
 		case 72:
+			// Up arrow
 			option--;
 			break;
 		case 80:
+			// Down arrow
 			option++;
 			break;
 		case 13:
+			// Enter
 			selectedDifficulty = difficultyList[option];
 			isSelectingDifficulty = false;
 			break;
