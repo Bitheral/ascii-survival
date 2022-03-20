@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <stdio.h>
+#include <Windows.h>
 
 #include "Controller.h"
 
@@ -12,5 +14,7 @@ int main() {
 	Controller controller;
 	controller.start();
 
+	Sleep(5000);
+	char c = getchar();
 	return 0;
 }

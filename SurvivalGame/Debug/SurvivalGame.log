@@ -1,21 +1,59 @@
-﻿  Controller.cpp
+﻿  console.cpp
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+  Controller.cpp
 F:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
 F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(33,65): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(41,62): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(51,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(62,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(63,21): warning C4018: '<': signed/unsigned mismatch
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(72,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(76,21): warning C4018: '<': signed/unsigned mismatch
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(82,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(83,21): warning C4018: '<': signed/unsigned mismatch
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(91,65): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(93,62): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(102,19): warning C4018: '>=': signed/unsigned mismatch
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(106,21): warning C4018: '<': signed/unsigned mismatch
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(110,116): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(180,64): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(182,98): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(32,65): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(40,62): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(54,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(67,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(68,21): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(80,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(85,21): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(93,66): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(94,21): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(102,65): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(104,62): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(113,19): warning C4018: '>=': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(117,21): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(121,116): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(191,64): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Controller.cpp(193,98): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+  Difficulty.cpp
+  Enemy.cpp
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Enemy.cpp(18,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Enemy.cpp(19,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Enemy.cpp(38,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Enemy.cpp(39,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Enemy.cpp(42,20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Entity.cpp
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.cpp(20,58): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.cpp(40,21): warning C4018: '<': signed/unsigned mismatch
+  Game.cpp
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(95,20): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(117,20): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(142,20): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(185,20): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(195,21): warning C4018: '<': signed/unsigned mismatch
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Game.cpp(214,19): warning C4018: '<': signed/unsigned mismatch
+  Player.cpp
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+  Source.cpp
+  Trap.cpp
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\Entity.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\University\Y1\C++\SurvivalGame\SurvivalGame\console.h(36): warning C4091: 'static ': ignored on left of 'Console::COLOUR' when no variable is declared
+  Generating Code...
   SurvivalGame.vcxproj -> F:\University\Y1\C++\SurvivalGame\Debug\SurvivalGame.exe

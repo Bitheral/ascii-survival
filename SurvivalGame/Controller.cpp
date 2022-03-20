@@ -24,7 +24,7 @@ void Controller::start() {
 	difficultyStr = "Select Difficulty";
 	operateStr = "Use arrow keys to select, enter to choose";
 
-	Console::setWindowTitle("Survival Game");
+	Console::setWindowTitle("ASCII Survival");
 	Console::setColour(Console::WHITE, Console::BLACK);
 	Console::clear();
 

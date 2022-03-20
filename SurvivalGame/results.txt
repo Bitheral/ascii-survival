@@ -1,2 +1,7 @@
-[19-03-2021 11-12-20] [Nathan] [Easy] You Lost! 0 Enemies killed
-[19-03-2021 11-13-57] [Nathan] [Easy] You Won! 5 Enemies killed
+[22-03-2021 10-20-20] [Nathan] [Easy] You Won! 5 Enemies killed
+[22-03-2021 10-20-37] [Nathan] [Easy] You Lost! 0 Enemies killed
+[10-09-2021 04-37-25] [Bitheral] [Medium] You Lost! 0 Enemies killed
+[10-09-2021 04-39-29] [Bitheral] [Easy] You Won! 5 Enemies killed
+[20-03-2022 13-03-31] [Hehe] [Hard] You Lost! 2 Enemies killed
+[20-03-2022 13-04-16] [Hehehe] [Hard] You Lost! 1 Enemies killed
+[20-03-2022 13-07-11] [Player] [Easy] You Won! 5 Enemies killed
