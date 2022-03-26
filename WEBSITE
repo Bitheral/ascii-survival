@@ -1,7 +1,7 @@
 {
   "name": "ASCII Survival",
   "body": "**ASCII Survival** is a simple survival game to show off the Windows Console API, where the player needs to survive enemies and falling into traps",
-  "order": 7,
+  "order": 6,
   "link": "https://university.bitheral.net/20-21/ascii-survival",
   "tags": [
     "University"
